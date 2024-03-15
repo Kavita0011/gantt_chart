@@ -1,0 +1,64 @@
+<!-- start of custom gantt chart form-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- start of header -->
+    <header>
+        <!-- heading of form -->
+        <div class="container">
+            <h1>Enter Task Details here</h1>
+        </div>
+    </header>
+    <!-- end of header -->
+    <!-- start of main section -->
+    <main>
+        <!-- start of container class -->
+        <div class="container">
+            <!-- start of form  -->
+            <form action="gantt_chart.php" method="POST">
+                <!-- hidden input field to get custom input values tasks  -->
+                <input type="hidden" name="task_length" id="task_length">
+                <!-- custom inputs will be shown in below div containing id form-field -->
+                <div id="form_field"></div>
+                <!-- button to submit data  -->
+                <div class="form-group">
+                    <button type=submit class="btn btn-primary">submit</button>
+                </div>
+        </div>
+        <!-- end of container class -->
+        </form>
+        <!-- end of form  -->
+        </div>
+        <!-- end of container class -->
+    </main>
+    <!-- end of main section -->
+    <!-- start of  js  -->
+    <script>
+        // task_length will take numbers of tasks from user
+        var task_length = prompt("Please Enter Number of tasks you have ", '2');
+        //number of tasks will be return in task_length field( hidden field)
+        document.getElementById("task_length").value = task_length;
+        // start of loop
+        for (var i = 1; i <= task_length; i++) {
+            //task_name field,start_date and end_date fields will be displayed accordingly
+            document.getElementById("form_field").innerHTML += '<br> <div class="form-group">    <label for="task_name' + i + '">Task Name' + i + '</label><input type="text" class="form-control" name="task_name' + i + '" required></div>';
+            document.getElementById("form_field").innerHTML += '<br> <div class="form-group">    <label for="start_date' + i + '">Start date of task' + i + '</label> <input type="date" class="form-control" name="task_start_date' + i + '"required></div>';
+            document.getElementById("form_field").innerHTML += '<br> <div class="form-group">     <label for="end_date' + i + '">End date of task' + i + '</label><input type="date" class="form-control" name="task_end_date' + i + '" required></div>';
+        }
+        // end of loop
+    </script>
+    <!-- end of js  -->
+</body>
+
+</html>
+<!-- end of custom gantt chart form-->
